@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "prettier",
+    "plugin:jest/recommended"  // Add this line
+  ],
+  "plugins": [
+    "jest"  // Add this line
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    // Add more custom rules here
+  }
+}
