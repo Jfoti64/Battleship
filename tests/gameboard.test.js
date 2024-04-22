@@ -20,7 +20,7 @@ test('Gameboard creates a 5x5 2D array', () => {
 });
 
 test('Check gameboard to insure submarine was placed at beginning of playerGameboard', () => {
-  const submarine = new Ship(2);
+  const submarine = new Ship(3);
   const playerGameboard = new Gameboard();
   playerGameboard.placeShip(submarine, 0, 0);
   const currentPlayerGameboard = playerGameboard.getGameboard();
@@ -53,6 +53,13 @@ test('Confirm that location has a ship and call hit() on that ship', () => {
 
 test('Confirm that location does not have a ship then log coordinates of the miss', () => {
   const playerGameboard = new Gameboard();
-  playerGameboard.receiveAttack(0, 2)
+  playerGameboard.receiveAttack(0, 2);
   expect(playerGameboard.missedShots).toContainEqual([0, 2]);
+});
+
+test('Check if the ships array contains all ships', () => {
+  const playerGameboard = new Gameboard();
+  playerGameboard.createShips();
+  const shipNames = playerGameboard.ships.map((ship) => ship.name);
+  expect(shipNames).toEqual(expect.arrayContaining(['Destroyer', 'Battleship', 'Destroyer', 'Submarine', 'PatrolBoat']));
 });

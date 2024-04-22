@@ -4,6 +4,7 @@ export default class Gameboard {
   constructor(rows = 10, columns = 10) {
     this.gameboard = this.createGameboard(rows, columns);
     this.missedShots = [];
+    this.ships = this.createShips();
   }
 
   createGameboard(rows, columns) {
@@ -38,5 +39,15 @@ export default class Gameboard {
       this.gameboard[row][column].hit();
     }
     this.missedShots.push([row, column]);
+  }
+
+  createShips() {
+    const carrier = new Ship(5, 'Carrier');
+    const Battleship = new Ship(4, 'Battleship');
+    const Destroyer = new Ship(3, 'Destroyer');
+    const Submarine = new Ship(3, 'Submarine');
+    const PatrolBoat = new Ship(2, 'PatrolBoat');
+
+    return [carrier, Battleship, Destroyer, Submarine, PatrolBoat]
   }
 }
