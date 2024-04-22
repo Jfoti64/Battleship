@@ -3,6 +3,7 @@ import Ship from './ships';
 export default class Gameboard {
   constructor(rows = 10, columns = 10) {
     this.gameboard = this.createGameboard(rows, columns);
+    this.missedShots = [];
   }
 
   createGameboard(rows, columns) {
@@ -35,8 +36,7 @@ export default class Gameboard {
   receiveAttack(row, column) {
     if (this.gameboard[row][column] instanceof Ship) {
       this.gameboard[row][column].hit();
-      return undefined;
     }
-    return [row, column];
+    this.missedShots.push([row, column]);
   }
 }
