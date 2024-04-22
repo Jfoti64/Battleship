@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713753660791" clover="3.2.0">
-  <project timestamp="1713753660791" name="All files">
-    <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3" elements="11" coveredelements="11" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1"/>
+<coverage generated="1713756961708" clover="3.2.0">
+  <project timestamp="1713756961708" name="All files">
+    <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="2" methods="6" coveredmethods="6" elements="24" coveredelements="22" complexity="0" loc="14" ncloc="14" packages="1" files="2" classes="2"/>
+    <file name="gameboard.js" path="/Users/joshuafoti/repos/Battleship/src/gameboard.js">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="9" count="15" type="stmt"/>
+      <line num="10" count="15" type="stmt"/>
+      <line num="11" count="125" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+    </file>
     <file name="ships.js" path="/Users/joshuafoti/repos/Battleship/src/ships.js">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <line num="3" count="2" type="stmt"/>

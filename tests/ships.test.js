@@ -1,4 +1,4 @@
-import Ship from '../src/ships.js';
+import Ship from '../src/ships';
 
 test('Increase hits until ship isSunk returns correct value', () => {
   const length = 1;

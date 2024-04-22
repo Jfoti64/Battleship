@@ -8,10 +8,10 @@
   "extends": [
     "airbnb-base",
     "prettier",
-    "plugin:jest/recommended"  // Add this line
+    "plugin:jest/recommended"
   ],
   "plugins": [
-    "jest"  // Add this line
+    "jest"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
