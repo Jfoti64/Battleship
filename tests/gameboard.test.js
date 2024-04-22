@@ -60,5 +60,22 @@ test('Confirm that location does not have a ship then log coordinates of the mis
 test('Check if the ships array contains all ships', () => {
   const playerGameboard = new Gameboard();
   const shipNames = playerGameboard.ships.map((ship) => ship.name);
-  expect(shipNames).toEqual(expect.arrayContaining(['Destroyer', 'Battleship', 'Destroyer', 'Submarine', 'PatrolBoat']));
+  expect(shipNames).toEqual(
+    expect.arrayContaining(['Destroyer', 'Battleship', 'Destroyer', 'Submarine', 'PatrolBoat'])
+  );
+});
+
+test('If all ships on board are sunk return true', () => {
+  const playerGameboard = new Gameboard();
+  playerGameboard.ships.forEach((ship) => {
+    for (let i = 0; i < ship.length; i += 1) {
+      ship.hit();
+    }
+  });
+  expect(playerGameboard.allShipsSunk()).toBe(true);
+});
+
+test('If all ships on board are not sunk return false', () => {
+  const playerGameboard = new Gameboard();
+  expect(playerGameboard.allShipsSunk()).toBe(false);
 });
