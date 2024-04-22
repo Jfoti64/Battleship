@@ -43,6 +43,18 @@ test('Check gameboard to insure submarine was placed correctly in playerGameboar
   expect(currentPlayerGameboard[2][0]).toBe(submarine);
 });
 
+test('If any part of the ship is out of bounds when placed horizontally, return false', () => {
+  const playerGameboard = new Gameboard();
+  const submarine = new Ship(3);
+  expect(playerGameboard.placeShip(submarine, 0, 9, false)).toBe(false);
+});
+
+test('If any part of the ship is out of bounds when placed vertically, return false', () => {
+  const playerGameboard = new Gameboard();
+  const submarine = new Ship(3);
+  expect(playerGameboard.placeShip(submarine, 9, 0, true)).toBe(false);
+});
+
 test('Confirm that location has a ship and call hit() on that ship', () => {
   const submarine = new Ship(3);
   const playerGameboard = new Gameboard();

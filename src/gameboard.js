@@ -28,6 +28,25 @@ export default class Gameboard {
   }
 
   placeShip(ship, row, column, vertical = true) {
+    // If ship would be out of bounds when placed, return false
+    if (vertical === false) {
+      if (
+        row > this.gameboard.length - 1 ||
+        column + ship.length > this.gameboard.length - 1 ||
+        column < 0 ||
+        row < 0
+      ) {
+        return false;
+      }
+    } else if (
+      row + ship.length > this.gameboard.length - 1 ||
+      column > this.gameboard.length - 1 ||
+      column < 0 ||
+      row < 0
+    ) {
+      return false;
+    }
+
     if (vertical === true) {
       for (let i = 0; i < ship.getLength(); i += 1) {
         this.gameboard[row][column + i] = ship;
@@ -37,6 +56,7 @@ export default class Gameboard {
         this.gameboard[row + i][column] = ship;
       }
     }
+    return true;
   }
 
   receiveAttack(row, column) {
