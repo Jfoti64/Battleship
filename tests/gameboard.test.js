@@ -1,4 +1,5 @@
-import Gameboard from "../src/gameboard";
+import Gameboard from '../src/gameboard';
+import Ship from '../src/ships';
 
 test('Gameboard creates a 10x10 2D array', () => {
   const rows = 10;
@@ -16,4 +17,28 @@ test('Gameboard creates a 5x5 2D array', () => {
   const arr = gameboard.getGameboard();
   const totalElements = arr.length * arr[1].length;
   expect(totalElements).toBe(25);
+});
+
+test('Check gameboard to insure submarine was placed at beginning of playerGameboard', () => {
+  const submarine = new Ship(2);
+  const playerGameboard = new Gameboard();
+  playerGameboard.placeShip(submarine, 0, 0);
+  const currentPlayerGameboard = playerGameboard.getGameboard();
+  expect(currentPlayerGameboard[0][0]).toBe(submarine);
+});
+
+test('Check gameboard to insure submarine was placed correctly in playerGameboard accounting for vertical length', () => {
+  const submarine = new Ship(3);
+  const playerGameboard = new Gameboard();
+  playerGameboard.placeShip(submarine, 0, 0, true);
+  const currentPlayerGameboard = playerGameboard.getGameboard();
+  expect(currentPlayerGameboard[0][2]).toBe(submarine);
+});
+
+test('Check gameboard to insure submarine was placed correctly in playerGameboard accounting for horizontal length', () => {
+  const submarine = new Ship(3);
+  const playerGameboard = new Gameboard();
+  playerGameboard.placeShip(submarine, 0, 0, false);
+  const currentPlayerGameboard = playerGameboard.getGameboard();
+  expect(currentPlayerGameboard[2][0]).toBe(submarine);
 });
