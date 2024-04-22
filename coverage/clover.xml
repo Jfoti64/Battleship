@@ -1,40 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713783761527" clover="3.2.0">
-  <project timestamp="1713783761527" name="All files">
-    <metrics statements="28" coveredstatements="28" conditionals="9" coveredconditionals="9" methods="12" coveredmethods="12" elements="49" coveredelements="49" complexity="0" loc="28" ncloc="28" packages="1" files="2" classes="2"/>
-    <file name="gameboard.js" path="/Users/joshuafoti/repos/Battleship/src/gameboard.js">
-      <metrics statements="19" coveredstatements="19" conditionals="7" coveredconditionals="7" methods="7" coveredmethods="7"/>
-      <line num="5" count="10" type="stmt"/>
-      <line num="6" count="10" type="stmt"/>
-      <line num="7" count="10" type="stmt"/>
-      <line num="8" count="10" type="stmt"/>
-      <line num="9" count="10" type="stmt"/>
-      <line num="19" count="10" type="stmt"/>
-      <line num="20" count="10" type="stmt"/>
-      <line num="21" count="95" type="stmt"/>
-      <line num="23" count="10" type="stmt"/>
-      <line num="27" count="5" type="stmt"/>
-      <line num="31" count="4" type="cond" truecount="2" falsecount="0"/>
-      <line num="32" count="3" type="stmt"/>
-      <line num="33" count="9" type="stmt"/>
-      <line num="36" count="1" type="stmt"/>
-      <line num="37" count="3" type="stmt"/>
-      <line num="43" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="44" count="1" type="stmt"/>
-      <line num="46" count="2" type="stmt"/>
-      <line num="50" count="6" type="stmt"/>
-    </file>
-    <file name="ships.js" path="/Users/joshuafoti/repos/Battleship/src/ships.js">
-      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-      <line num="3" count="54" type="stmt"/>
-      <line num="4" count="54" type="stmt"/>
-      <line num="5" count="54" type="stmt"/>
-      <line num="9" count="16" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="17" count="18" type="stmt"/>
-      <line num="21" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="22" count="5" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-    </file>
+<coverage generated="1713827485403" clover="3.2.0">
+  <project timestamp="1713827485403" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>
