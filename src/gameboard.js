@@ -2,20 +2,25 @@ import Ship from './ships';
 
 export default class Gameboard {
   constructor(rows = 10, columns = 10) {
-    this.gameboard = this.createGameboard(rows, columns);
+    this.rows = rows;
+    this.columns = columns;
+    this.gameboard = this.createGameboard();
     this.missedShots = [];
-    this.ships = this.createShips();
+    this.ships = [
+      new Ship(5, 'Carrier'),
+      new Ship(4, 'Battleship'),
+      new Ship(3, 'Destroyer'),
+      new Ship(3, 'Submarine'),
+      new Ship(2, 'PatrolBoat'),
+    ];
   }
 
-  createGameboard(rows, columns) {
-    const twoDimensionalArray = [];
-    for (let i = 0; i < rows; i += 1) {
-      twoDimensionalArray[i] = [];
-      for (let j = 0; j < columns; j += 1) {
-        twoDimensionalArray[i][j] = j;
-      }
+  createGameboard() {
+    const board = [];
+    for (let i = 0; i < this.rows; i += 1) {
+      board[i] = new Array(this.columns).fill(null); // Fill with null, or another default value
     }
-    return twoDimensionalArray;
+    return board;
   }
 
   getGameboard() {
@@ -39,15 +44,5 @@ export default class Gameboard {
       this.gameboard[row][column].hit();
     }
     this.missedShots.push([row, column]);
-  }
-
-  createShips() {
-    const carrier = new Ship(5, 'Carrier');
-    const Battleship = new Ship(4, 'Battleship');
-    const Destroyer = new Ship(3, 'Destroyer');
-    const Submarine = new Ship(3, 'Submarine');
-    const PatrolBoat = new Ship(2, 'PatrolBoat');
-
-    return [carrier, Battleship, Destroyer, Submarine, PatrolBoat]
   }
 }

@@ -59,7 +59,6 @@ test('Confirm that location does not have a ship then log coordinates of the mis
 
 test('Check if the ships array contains all ships', () => {
   const playerGameboard = new Gameboard();
-  playerGameboard.createShips();
   const shipNames = playerGameboard.ships.map((ship) => ship.name);
   expect(shipNames).toEqual(expect.arrayContaining(['Destroyer', 'Battleship', 'Destroyer', 'Submarine', 'PatrolBoat']));
 });
