@@ -8,6 +8,10 @@ export default class Ship {
     return this.length;
   }
 
+  getHits() {
+    return this.hits;
+  }
+
   hit() {
     this.hits += 1;
   }

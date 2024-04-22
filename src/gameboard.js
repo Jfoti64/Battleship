@@ -31,4 +31,12 @@ export default class Gameboard {
       }
     }
   }
+
+  receiveAttack(row, column) {
+    if (this.gameboard[row][column] instanceof Ship) {
+      this.gameboard[row][column].hit();
+      return undefined;
+    }
+    return [row, column];
+  }
 }

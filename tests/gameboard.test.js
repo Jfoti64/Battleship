@@ -42,3 +42,16 @@ test('Check gameboard to insure submarine was placed correctly in playerGameboar
   const currentPlayerGameboard = playerGameboard.getGameboard();
   expect(currentPlayerGameboard[2][0]).toBe(submarine);
 });
+
+test('Confirm that location has a ship and call hit() on that ship', () => {
+  const submarine = new Ship(3);
+  const playerGameboard = new Gameboard();
+  playerGameboard.placeShip(submarine, 0, 0, true);
+  playerGameboard.receiveAttack(0, 2);
+  expect(submarine.getHits()).toBe(1);
+});
+
+test('Confirm that location does not have a ship return coordinates of the miss', () => {
+  const playerGameboard = new Gameboard();
+  expect(playerGameboard.receiveAttack(0, 2)).toEqual([0, 2]);
+});
