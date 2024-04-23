@@ -26,7 +26,6 @@ function handleCellClick(event, player) {
   const column = parseInt(parts[1], 10);
 
   player.gameboard.receiveAttack(row, column, player);
-
   renderGameboards(player);
   attachEventListeners(player); // Re-attach event listeners after rendering
 }
