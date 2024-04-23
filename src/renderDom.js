@@ -1,12 +1,20 @@
-export default function renderGameboards(humanPlayer, computerPlayer) {
+import Ship from './ships';
+
+function renderGameboards(humanPlayer, computerPlayer) {
   // Render human player's gameboard
+  const humanGameboard = humanPlayer.gameboard.gameboard;
   const gameboard1Container = document.getElementById('gameboard1');
   gameboard1Container.innerHTML = ''; // Clear previous gameboard
   for (let i = 0; i < humanPlayer.gameboard.rows; i += 1) {
     for (let j = 0; j < humanPlayer.gameboard.columns; j += 1) {
       const gameboardCell = document.createElement('div');
       gameboardCell.classList.add('gameboardCell');
+      gameboardCell.setAttribute('data-index', `${i}-${j}`);
       gameboard1Container.appendChild(gameboardCell);
+      if (humanGameboard[i][j] instanceof Ship) {
+        const cell = document.querySelector(`[data-index="${i}-${j}"]`);
+        cell.classList.add('green');
+      }
     }
   }
 
@@ -17,7 +25,10 @@ export default function renderGameboards(humanPlayer, computerPlayer) {
     for (let j = 0; j < computerPlayer.gameboard.columns; j += 1) {
       const gameboardCell = document.createElement('div');
       gameboardCell.classList.add('gameboardCell');
+      gameboardCell.setAttribute('data-index', `${i}-${j}`);
       gameboard2Container.appendChild(gameboardCell);
     }
   }
 }
+
+export { renderGameboards };

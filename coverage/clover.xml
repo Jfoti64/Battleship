@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713863064185" clover="3.2.0">
-  <project timestamp="1713863064185" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1713867061060" clover="3.2.0">
+  <project timestamp="1713867061060" name="All files">
+    <metrics statements="52" coveredstatements="32" conditionals="29" coveredconditionals="27" methods="8" coveredmethods="7" elements="89" coveredelements="66" complexity="0" loc="52" ncloc="52" packages="1" files="2" classes="2"/>
+    <file name="gameboard.js" path="/Users/joshuafoti/repos/Battleship/src/gameboard.js">
+      <metrics statements="32" coveredstatements="32" conditionals="27" coveredconditionals="27" methods="7" coveredmethods="7"/>
+      <line num="6" count="14" type="stmt"/>
+      <line num="7" count="14" type="stmt"/>
+      <line num="8" count="14" type="stmt"/>
+      <line num="9" count="14" type="stmt"/>
+      <line num="10" count="14" type="stmt"/>
+      <line num="20" count="14" type="stmt"/>
+      <line num="21" count="14" type="stmt"/>
+      <line num="22" count="135" type="stmt"/>
+      <line num="24" count="14" type="stmt"/>
+      <line num="28" count="5" type="stmt"/>
+      <line num="33" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="40" count="1" type="stmt"/>
+      <line num="42" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="1" type="stmt"/>
+      <line num="51" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="52" count="3" type="stmt"/>
+      <line num="53" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="54" count="1" type="stmt"/>
+      <line num="58" count="5" type="stmt"/>
+      <line num="59" count="13" type="cond" truecount="2" falsecount="0"/>
+      <line num="60" count="1" type="stmt"/>
+      <line num="65" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="66" count="4" type="stmt"/>
+      <line num="67" count="12" type="stmt"/>
+      <line num="70" count="2" type="stmt"/>
+      <line num="71" count="6" type="stmt"/>
+      <line num="74" count="6" type="stmt"/>
+      <line num="78" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="79" count="1" type="stmt"/>
+      <line num="81" count="2" type="stmt"/>
+      <line num="85" count="6" type="stmt"/>
+    </file>
+    <file name="renderDom.js" path="/Users/joshuafoti/repos/Battleship/src/renderDom.js">
+      <metrics statements="20" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="13" count="0" type="stmt"/>
+      <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="22" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="28" count="0" type="stmt"/>
+      <line num="29" count="0" type="stmt"/>
+    </file>
   </project>
 </coverage>

@@ -1,4 +1,5 @@
 import Ship from './ships';
+import { renderGameboards, addShipToGameboard } from './renderDom';
 
 export default class Gameboard {
   constructor(rows = 10, columns = 10) {

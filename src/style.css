@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0px;
   display: grid;
-  grid-template-rows: 0.25fr 1fr 0.25fr;
+  grid-template-rows: 0.25fr 0.15fr 1fr 0.25fr;
 }
 .grid {
   display: grid;
@@ -38,4 +38,8 @@ body {
 
 footer {
   grid-row: -1;
+}
+
+.green {
+  background-color: green;
 }
