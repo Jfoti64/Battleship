@@ -19,6 +19,7 @@ function renderGameboards(humanPlayer, computerPlayer) {
   }
 
   // Render computer player's gameboard
+  const computerGameboard = computerPlayer.gameboard.gameboard;
   const gameboard2Container = document.getElementById('gameboard2');
   gameboard2Container.innerHTML = ''; // Clear previous gameboard
   for (let i = 0; i < computerPlayer.gameboard.rows; i += 1) {
@@ -26,6 +27,12 @@ function renderGameboards(humanPlayer, computerPlayer) {
       const gameboardCell = document.createElement('div');
       gameboardCell.classList.add('gameboardCell');
       gameboardCell.setAttribute('data-index', `${i}-${j}`);
+
+      // Apply styles directly instead of querying the DOM again
+      if (computerGameboard[i][j] instanceof Ship) {
+        gameboardCell.classList.add('red');
+      }
+
       gameboard2Container.appendChild(gameboardCell);
     }
   }

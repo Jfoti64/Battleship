@@ -74,14 +74,23 @@ export default class Gameboard {
     return true;
   }
 
-  receiveAttack(row, column) {
+  receiveAttack(row, column, player) {
     if (this.gameboard[row][column] instanceof Ship) {
       const ship = this.gameboard[row][column];
       ship.hit();
-      if (ship.isSunk() === true) {
-        changeMessage(`You have sunk the enemy ${ship.name}!`)
+
+      // Check if the ship is sunk and provide feedback
+      if (ship.isSunk()) {
+        const message = player.isComputer
+          ? `Your ${ship.name} has been sunk!`
+          : `You have sunk the enemy ${ship.name}!`;
+        changeMessage(message);
       }
+
+      // Optionally update the cell state to 'hit' for visual feedback
+      this.gameboard[row][column] = 'hit';
     } else {
+      // Mark the cell as 'miss' if there is no ship
       this.gameboard[row][column] = 'miss';
     }
   }

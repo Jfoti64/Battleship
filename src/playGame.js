@@ -27,8 +27,8 @@ export default function startGame() {
     { type: new Ship(5, 'Carrier'), row: 1, column: 1, vertical: true },
     { type: new Ship(4, 'Battleship'), row: 3, column: 3, vertical: true },
     { type: new Ship(3, 'Destroyer'), row: 5, column: 5, vertical: false },
-    { type: new Ship(3, 'Submarine'), row: 7, column: 7, vertical: false },
-    { type: new Ship(2, 'PatrolBoat'), row: 9, column: 9, vertical: true },
+    { type: new Ship(3, 'Submarine'), row: 7, column: 6, vertical: false },
+    { type: new Ship(2, 'PatrolBoat'), row: 9, column: 3, vertical: false },
   ];
 
   // Place ships on computer player's gameboard
@@ -48,7 +48,7 @@ export default function startGame() {
     const row = parseInt(parts[0], 10); // Convert the first part to an integer (row)
     const column = parseInt(parts[1], 10); // Convert the second part to an integer (column)
 
-    computerPlayer.gameboard.receiveAttack(row, column);
+    computerPlayer.gameboard.receiveAttack(row, column, humanPlayer);
   }
 
   const cells = document.querySelectorAll('.gameboardCell');
