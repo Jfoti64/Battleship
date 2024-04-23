@@ -1,11 +1,16 @@
 import Gameboard from './gameboard';
 import Player from './players';
 import Ship from './ships';
+import renderGameboards from './renderDom';
 
-const humanPlayer = new Player();
-const computerPlayer = new Player(true);
+export default function startGame() {
+  const humanPlayer = new Player(false); // Assuming false indicates a human player
+  const computerPlayer = new Player(true); // True indicates AI or computer player
 
-(function placeAllShips() {
-  humanPlayer.gameboard.ships.forEach((ship) => humanPlayer.gameboard.placeShip(ship));
-  computerPlayer.gameboard.ships.forEach((ship) => computerPlayer.gameboard.placeShip(ship));
-})();
+  // Make sure each player has a gameboard
+  humanPlayer.gameboard = new Gameboard();
+  computerPlayer.gameboard = new Gameboard();
+
+  // Now pass both players to the render function
+  renderGameboards(humanPlayer, computerPlayer);
+}
