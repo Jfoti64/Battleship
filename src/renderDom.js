@@ -31,4 +31,10 @@ function renderGameboards(humanPlayer, computerPlayer) {
   }
 }
 
-export { renderGameboards };
+function changeMessage(message) {
+  const messageDisplay = document.getElementById('messages');
+
+  messageDisplay.innerHTML = message;
+}
+
+export { renderGameboards, changeMessage };

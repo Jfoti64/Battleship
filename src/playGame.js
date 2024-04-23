@@ -38,4 +38,21 @@ export default function startGame() {
 
   // Now pass both players to the render function
   renderGameboards(humanPlayer, computerPlayer);
+
+  function handleCellClick(event) {
+    // Retrieve the 'data-index' attribute from the clicked cell
+    const dataIndex = event.target.getAttribute('data-index');
+
+    // Split the 'data-index' string on the hyphen '-' to get row and column
+    const parts = dataIndex.split('-'); // parts will be an array, e.g., ["0", "1"]
+    const row = parseInt(parts[0], 10); // Convert the first part to an integer (row)
+    const column = parseInt(parts[1], 10); // Convert the second part to an integer (column)
+
+    computerPlayer.gameboard.receiveAttack(row, column);
+  }
+
+  const cells = document.querySelectorAll('.gameboardCell');
+  cells.forEach((cell) => {
+    cell.addEventListener('click', handleCellClick);
+  });
 }

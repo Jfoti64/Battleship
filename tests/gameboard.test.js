@@ -82,7 +82,7 @@ test('Confirm that location has a ship and call hit() on that ship', () => {
 test('Confirm that location does not have a ship then log coordinates of the miss', () => {
   const playerGameboard = new Gameboard();
   playerGameboard.receiveAttack(0, 2);
-  expect(playerGameboard.missedShots).toContainEqual([0, 2]);
+  expect(playerGameboard[0][2]).toBe('miss');
 });
 
 test('Check if the ships array contains all ships', () => {

@@ -1,5 +1,5 @@
 import Ship from './ships';
-import { renderGameboards, addShipToGameboard } from './renderDom';
+import { renderGameboards, addShipToGameboard, changeMessage } from './renderDom';
 
 export default class Gameboard {
   constructor(rows = 10, columns = 10) {
@@ -76,9 +76,14 @@ export default class Gameboard {
 
   receiveAttack(row, column) {
     if (this.gameboard[row][column] instanceof Ship) {
-      this.gameboard[row][column].hit();
+      const ship = this.gameboard[row][column];
+      ship.hit();
+      if (ship.isSunk() === true) {
+        changeMessage(`You have sunk the enemy ${ship.name}!`)
+      }
+    } else {
+      this.gameboard[row][column] = 'miss';
     }
-    this.missedShots.push([row, column]);
   }
 
   allShipsSunk() {
