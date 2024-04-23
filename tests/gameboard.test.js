@@ -32,7 +32,7 @@ test('Check gameboard to insure submarine was placed correctly in playerGameboar
   const playerGameboard = new Gameboard();
   playerGameboard.placeShip(submarine, 0, 0, true);
   const currentPlayerGameboard = playerGameboard.getGameboard();
-  expect(currentPlayerGameboard[0][2]).toBe(submarine);
+  expect(currentPlayerGameboard[1][0]).toBe(submarine);
 });
 
 test('Check gameboard to insure submarine was placed correctly in playerGameboard accounting for horizontal length', () => {
@@ -40,7 +40,7 @@ test('Check gameboard to insure submarine was placed correctly in playerGameboar
   const playerGameboard = new Gameboard();
   playerGameboard.placeShip(submarine, 0, 0, false);
   const currentPlayerGameboard = playerGameboard.getGameboard();
-  expect(currentPlayerGameboard[2][0]).toBe(submarine);
+  expect(currentPlayerGameboard[0][2]).toBe(submarine);
 });
 
 test('If any part of the ship is out of bounds when placed horizontally, return false', () => {
@@ -55,11 +55,27 @@ test('If any part of the ship is out of bounds when placed vertically, return fa
   expect(playerGameboard.placeShip(submarine, 9, 0, true)).toBe(false);
 });
 
+test('If any part of the ship would overlap with another ship horizontally, return false', () => {
+  const playerGameboard = new Gameboard();
+  const submarine = new Ship(3);
+  const destroyer = new Ship(3);
+  playerGameboard.placeShip(submarine, 0, 0, false);
+  expect(playerGameboard.placeShip(destroyer, 0, 1, false)).toBe(false);
+});
+
+test('If any part of the ship would overlap with another ship vertically, return false', () => {
+  const playerGameboard = new Gameboard();
+  const submarine = new Ship(3);
+  const destroyer = new Ship(3);
+  playerGameboard.placeShip(submarine, 0, 1, true);
+  expect(playerGameboard.placeShip(destroyer, 2, 1, true)).toBe(false);
+});
+
 test('Confirm that location has a ship and call hit() on that ship', () => {
   const submarine = new Ship(3);
   const playerGameboard = new Gameboard();
   playerGameboard.placeShip(submarine, 0, 0, true);
-  playerGameboard.receiveAttack(0, 2);
+  playerGameboard.receiveAttack(2, 0);
   expect(submarine.getHits()).toBe(1);
 });
 

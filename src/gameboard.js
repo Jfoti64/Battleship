@@ -46,14 +46,28 @@ export default class Gameboard {
     ) {
       return false;
     }
-
-    if (vertical === true) {
-      for (let i = 0; i < ship.getLength(); i += 1) {
-        this.gameboard[row][column + i] = ship;
+    // If ship would overlap with another ship, return false
+    if (vertical === false) {
+      for (let i = 0; i < ship.length; i += 1) {
+        if (this.gameboard[row][column + i] instanceof Ship) {
+          return false;
+        }
       }
     } else {
-      for (let i = 0; i < ship.getLength(); i += 1) {
+      for (let i = 0; i < ship.length; i += 1) {
+        if (this.gameboard[row + i][column] instanceof Ship) {
+          return false;
+        }
+      }
+    }
+    // Place ship
+    if (vertical) {
+      for (let i = 0; i < ship.length; i += 1) {
         this.gameboard[row + i][column] = ship;
+      }
+    } else {
+      for (let i = 0; i < ship.length; i += 1) {
+        this.gameboard[row][column + i] = ship;
       }
     }
     return true;
