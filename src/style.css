@@ -47,3 +47,11 @@ footer {
 .red {
   background-color: red;
 }
+
+.miss {
+  background-color: yellow;
+}
+
+.hit {
+  background-color: blueviolet;
+}

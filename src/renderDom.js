@@ -1,39 +1,33 @@
 import Ship from './ships';
 
-function renderGameboards(humanPlayer, computerPlayer) {
-  // Render human player's gameboard
-  const humanGameboard = humanPlayer.gameboard.gameboard;
-  const gameboard1Container = document.getElementById('gameboard1');
-  gameboard1Container.innerHTML = ''; // Clear previous gameboard
-  for (let i = 0; i < humanPlayer.gameboard.rows; i += 1) {
-    for (let j = 0; j < humanPlayer.gameboard.columns; j += 1) {
-      const gameboardCell = document.createElement('div');
-      gameboardCell.classList.add('gameboardCell');
-      gameboardCell.setAttribute('data-index', `${i}-${j}`);
-      gameboard1Container.appendChild(gameboardCell);
-      if (humanGameboard[i][j] instanceof Ship) {
-        const cell = document.querySelector(`[data-index="${i}-${j}"]`);
-        cell.classList.add('green');
-      }
-    }
-  }
+function renderGameboards(player) {
+  // Get the appropriate gameboard and container based on player type
+  const { gameboard } = player.gameboard;
+  const gameboardContainerId = player.isComputer ? 'gameboard2' : 'gameboard1';
+  const gameboardContainer = document.getElementById(gameboardContainerId);
 
-  // Render computer player's gameboard
-  const computerGameboard = computerPlayer.gameboard.gameboard;
-  const gameboard2Container = document.getElementById('gameboard2');
-  gameboard2Container.innerHTML = ''; // Clear previous gameboard
-  for (let i = 0; i < computerPlayer.gameboard.rows; i += 1) {
-    for (let j = 0; j < computerPlayer.gameboard.columns; j += 1) {
+  // Clear previous gameboard content
+  gameboardContainer.innerHTML = '';
+
+  // Iterate through each cell in the gameboard
+  for (let i = 0; i < player.gameboard.rows; i += 1) {
+    for (let j = 0; j < player.gameboard.columns; j += 1) {
       const gameboardCell = document.createElement('div');
       gameboardCell.classList.add('gameboardCell');
       gameboardCell.setAttribute('data-index', `${i}-${j}`);
 
-      // Apply styles directly instead of querying the DOM again
-      if (computerGameboard[i][j] instanceof Ship) {
-        gameboardCell.classList.add('red');
+      // Check the status of each cell and apply the appropriate class
+      if (gameboard[i][j] instanceof Ship) {
+        // Color cells containing ships differently based on player type
+        gameboardCell.classList.add(player.isComputer ? 'red' : 'green');
+      } else if (gameboard[i][j] === 'miss') {
+        gameboardCell.classList.add('miss');
+      } else if (gameboard[i][j] === 'hit') {
+        gameboardCell.classList.add('hit');
       }
 
-      gameboard2Container.appendChild(gameboardCell);
+      // Append the cell to the container
+      gameboardContainer.appendChild(gameboardCell);
     }
   }
 }
