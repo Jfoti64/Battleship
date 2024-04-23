@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713833042857" clover="3.2.0">
-  <project timestamp="1713833042857" name="All files">
-    <metrics statements="41" coveredstatements="40" conditionals="29" coveredconditionals="29" methods="12" coveredmethods="11" elements="82" coveredelements="80" complexity="0" loc="41" ncloc="41" packages="1" files="2" classes="2"/>
-    <file name="gameboard.js" path="/Users/joshuafoti/repos/Battleship/src/gameboard.js">
-      <metrics statements="32" coveredstatements="32" conditionals="27" coveredconditionals="27" methods="7" coveredmethods="7"/>
-      <line num="5" count="14" type="stmt"/>
-      <line num="6" count="14" type="stmt"/>
-      <line num="7" count="14" type="stmt"/>
-      <line num="8" count="14" type="stmt"/>
-      <line num="9" count="14" type="stmt"/>
-      <line num="19" count="14" type="stmt"/>
-      <line num="20" count="14" type="stmt"/>
-      <line num="21" count="135" type="stmt"/>
-      <line num="23" count="14" type="stmt"/>
-      <line num="27" count="5" type="stmt"/>
-      <line num="32" count="10" type="cond" truecount="2" falsecount="0"/>
-      <line num="33" count="4" type="cond" truecount="2" falsecount="0"/>
-      <line num="39" count="1" type="stmt"/>
-      <line num="41" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="47" count="1" type="stmt"/>
-      <line num="50" count="8" type="cond" truecount="2" falsecount="0"/>
-      <line num="51" count="3" type="stmt"/>
-      <line num="52" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="53" count="1" type="stmt"/>
-      <line num="57" count="5" type="stmt"/>
-      <line num="58" count="13" type="cond" truecount="2" falsecount="0"/>
-      <line num="59" count="1" type="stmt"/>
-      <line num="64" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="65" count="4" type="stmt"/>
-      <line num="66" count="12" type="stmt"/>
-      <line num="69" count="2" type="stmt"/>
-      <line num="70" count="6" type="stmt"/>
-      <line num="73" count="6" type="stmt"/>
-      <line num="77" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="78" count="1" type="stmt"/>
-      <line num="80" count="2" type="stmt"/>
-      <line num="84" count="6" type="stmt"/>
-    </file>
-    <file name="ships.js" path="/Users/joshuafoti/repos/Battleship/src/ships.js">
-      <metrics statements="9" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
-      <line num="3" count="80" type="stmt"/>
-      <line num="4" count="80" type="stmt"/>
-      <line num="5" count="80" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="17" count="18" type="stmt"/>
-      <line num="21" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="22" count="5" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-    </file>
+<coverage generated="1713859795623" clover="3.2.0">
+  <project timestamp="1713859795623" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>
