@@ -1,26 +1,39 @@
 import Player from './players';
 import { changeMessage, renderGameboards } from './renderDom';
 
+function randomShipPosition(player) {
+  const row = Math.floor(Math.random() * player.gameboard.rows);
+  const column = Math.floor(Math.random() * player.gameboard.columns);
+  const vertical = Math.random() > 0.5; // Randomly decide if the ship should be vertical
+
+  return { row, column, vertical };
+}
+
 function defineShipPositions(player, ships) {
   ships.forEach((ship) => {
-    player.gameboard.placeShip(ship.type, ship.row, ship.column, ship.vertical);
+    let position;
+    do {
+      position = randomShipPosition(player, ship.type.length);
+    } while (
+      !player.gameboard.placeShip(ship.type, position.row, position.column, position.vertical)
+    );
   });
 }
 
 function setupGame(humanPlayer, computerPlayer) {
   defineShipPositions(humanPlayer, [
-    { type: humanPlayer.gameboard.ships[0], row: 0, column: 0, vertical: true },
-    { type: humanPlayer.gameboard.ships[1], row: 2, column: 2, vertical: true },
-    { type: humanPlayer.gameboard.ships[2], row: 4, column: 4, vertical: false },
-    { type: humanPlayer.gameboard.ships[3], row: 6, column: 6, vertical: false },
-    { type: humanPlayer.gameboard.ships[4], row: 9, column: 0, vertical: false },
+    { type: humanPlayer.gameboard.ships[0] },
+    { type: humanPlayer.gameboard.ships[1] },
+    { type: humanPlayer.gameboard.ships[2] },
+    { type: humanPlayer.gameboard.ships[3] },
+    { type: humanPlayer.gameboard.ships[4] },
   ]);
   defineShipPositions(computerPlayer, [
-    { type: computerPlayer.gameboard.ships[0], row: 1, column: 1, vertical: true },
-    { type: computerPlayer.gameboard.ships[1], row: 3, column: 3, vertical: true },
-    { type: computerPlayer.gameboard.ships[2], row: 5, column: 5, vertical: false },
-    { type: computerPlayer.gameboard.ships[3], row: 7, column: 6, vertical: false },
-    { type: computerPlayer.gameboard.ships[4], row: 9, column: 3, vertical: false },
+    { type: computerPlayer.gameboard.ships[0] },
+    { type: computerPlayer.gameboard.ships[1] },
+    { type: computerPlayer.gameboard.ships[2] },
+    { type: computerPlayer.gameboard.ships[3] },
+    { type: computerPlayer.gameboard.ships[4] },
   ]);
 
   renderGameboards(humanPlayer);
@@ -52,6 +65,9 @@ function handleCellClick(event, humanPlayer, computerPlayer) {
   const parts = dataIndex.split('-');
   const row = parseInt(parts[0], 10);
   const column = parseInt(parts[1], 10);
+  const placeShipsBtn = document.getElementById('placeShips');
+
+  placeShipsBtn.disabled = true; // disable the button
 
   // Player attacks computer
   if (!computerPlayer.gameboard.receiveAttack(row, column, computerPlayer)) {
@@ -83,8 +99,16 @@ function startGame() {
   const humanPlayer = new Player(false);
   const computerPlayer = new Player(true);
 
-  setupGame(humanPlayer, computerPlayer);
-  attachEventListeners(humanPlayer, computerPlayer);
+  const placeShipsBtn = document.getElementById('placeShips');
+
+  // Improved button event handling to prevent duplicate event listeners
+  placeShipsBtn.onclick = () => {
+    // Using .onclick to automatically handle removing old listeners
+    startGame();
+  };
+
+  setupGame(humanPlayer, computerPlayer); // Initialize the game setup
+  attachEventListeners(humanPlayer, computerPlayer); // Attach game interaction listeners
 }
 
 export default startGame;

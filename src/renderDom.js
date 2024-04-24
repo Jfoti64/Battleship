@@ -19,7 +19,9 @@ function renderGameboards(player) {
       // Check the status of each cell and apply the appropriate class
       if (gameboard[i][j] instanceof Ship) {
         // Color cells containing ships differently based on player type
-        gameboardCell.classList.add(player.isComputer ? 'red' : 'green');
+        if (!player.isComputer) {
+          gameboardCell.classList.add('green');
+        }
       } else if (gameboard[i][j] === 'miss') {
         gameboardCell.classList.add('miss');
       } else if (gameboard[i][j] === 'hit') {

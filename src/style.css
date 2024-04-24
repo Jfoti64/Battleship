@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0px;
   display: grid;
-  grid-template-rows: 0.25fr 0.15fr 1fr 0.25fr;
+  grid-template-rows: 0.25fr 0.15fr 0.10fr 1fr 0.25fr;
 }
 .grid {
   display: grid;
@@ -45,7 +45,7 @@ footer {
 }
 
 .red {
-  background-color: red;
+  background-color: rgb(137, 36, 36);
 }
 
 .miss {
@@ -53,5 +53,5 @@ footer {
 }
 
 .hit {
-  background-color: blueviolet;
+  background-color: red;
 }
