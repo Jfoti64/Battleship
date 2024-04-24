@@ -1,6 +1,5 @@
 import Player from './players';
-import Ship from './ships';
-import { renderGameboards } from './renderDom';
+import { changeMessage, renderGameboards } from './renderDom';
 
 function defineShipPositions(player, ships) {
   ships.forEach((ship) => {
@@ -10,18 +9,18 @@ function defineShipPositions(player, ships) {
 
 function setupGame(humanPlayer, computerPlayer) {
   defineShipPositions(humanPlayer, [
-    { type: new Ship(5, 'Carrier'), row: 0, column: 0, vertical: true },
-    { type: new Ship(4, 'Battleship'), row: 2, column: 2, vertical: true },
-    { type: new Ship(3, 'Destroyer'), row: 4, column: 4, vertical: false },
-    { type: new Ship(3, 'Submarine'), row: 6, column: 6, vertical: false },
-    { type: new Ship(2, 'PatrolBoat'), row: 9, column: 0, vertical: false },
+    { type: humanPlayer.gameboard.ships[0], row: 0, column: 0, vertical: true },
+    { type: humanPlayer.gameboard.ships[1], row: 2, column: 2, vertical: true },
+    { type: humanPlayer.gameboard.ships[2], row: 4, column: 4, vertical: false },
+    { type: humanPlayer.gameboard.ships[3], row: 6, column: 6, vertical: false },
+    { type: humanPlayer.gameboard.ships[4], row: 9, column: 0, vertical: false },
   ]);
   defineShipPositions(computerPlayer, [
-    { type: new Ship(5, 'Carrier'), row: 1, column: 1, vertical: true },
-    { type: new Ship(4, 'Battleship'), row: 3, column: 3, vertical: true },
-    { type: new Ship(3, 'Destroyer'), row: 5, column: 5, vertical: false },
-    { type: new Ship(3, 'Submarine'), row: 7, column: 6, vertical: false },
-    { type: new Ship(2, 'PatrolBoat'), row: 9, column: 3, vertical: false },
+    { type: computerPlayer.gameboard.ships[0], row: 1, column: 1, vertical: true },
+    { type: computerPlayer.gameboard.ships[1], row: 3, column: 3, vertical: true },
+    { type: computerPlayer.gameboard.ships[2], row: 5, column: 5, vertical: false },
+    { type: computerPlayer.gameboard.ships[3], row: 7, column: 6, vertical: false },
+    { type: computerPlayer.gameboard.ships[4], row: 9, column: 3, vertical: false },
   ]);
 
   renderGameboards(humanPlayer);
@@ -29,12 +28,14 @@ function setupGame(humanPlayer, computerPlayer) {
 }
 
 function computerCounterAttack(humanPlayer) {
-  let row = Math.floor(Math.random() * humanPlayer.gameboard.rows);
-  let column = Math.floor(Math.random() * humanPlayer.gameboard.columns);
+  let success = false; // To keep track of whether the attack was successful
 
-  if (humanPlayer.gameboard.receiveAttack(row, column, humanPlayer)) {
-    row = Math.floor(Math.random() * humanPlayer.gameboard.rows);
-    column = Math.floor(Math.random() * humanPlayer.gameboard.columns);
+  while (!success) {
+    const row = Math.floor(Math.random() * humanPlayer.gameboard.rows);
+    const column = Math.floor(Math.random() * humanPlayer.gameboard.columns);
+
+    // Attempt to attack; receiveAttack should return true if the attack was valid and processed
+    success = humanPlayer.gameboard.receiveAttack(row, column, humanPlayer);
   }
 }
 
@@ -52,16 +53,27 @@ function handleCellClick(event, humanPlayer, computerPlayer) {
   const row = parseInt(parts[0], 10);
   const column = parseInt(parts[1], 10);
 
+  // Player attacks computer
   if (!computerPlayer.gameboard.receiveAttack(row, column, computerPlayer)) {
     return;
   }
-  // Player attacks computer
+
+  if (computerPlayer.gameboard.allShipsSunk()) {
+    changeMessage('Player Wins!');
+    renderGameboards(computerPlayer);
+    return;
+  }
 
   renderGameboards(computerPlayer);
 
   // Computer counterattacks
   setTimeout(() => {
     computerCounterAttack(humanPlayer);
+    if (humanPlayer.gameboard.allShipsSunk()) {
+      changeMessage('Computer Wins!');
+      renderGameboards(humanPlayer);
+      return;
+    }
     renderGameboards(humanPlayer); // Assuming you want to update human's board to show hits/misses
     attachEventListeners(humanPlayer, computerPlayer);
   }, 600); // Delay to simulate think time
