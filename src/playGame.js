@@ -29,9 +29,13 @@ function setupGame(humanPlayer, computerPlayer) {
 }
 
 function computerCounterAttack(humanPlayer) {
-  const row = Math.floor(Math.random() * humanPlayer.gameboard.rows);
-  const column = Math.floor(Math.random() * humanPlayer.gameboard.columns);
-  humanPlayer.gameboard.receiveAttack(row, column, humanPlayer);
+  let row = Math.floor(Math.random() * humanPlayer.gameboard.rows);
+  let column = Math.floor(Math.random() * humanPlayer.gameboard.columns);
+
+  if (humanPlayer.gameboard.receiveAttack(row, column, humanPlayer)) {
+    row = Math.floor(Math.random() * humanPlayer.gameboard.rows);
+    column = Math.floor(Math.random() * humanPlayer.gameboard.columns);
+  }
 }
 
 function attachEventListeners(humanPlayer, computerPlayer) {
@@ -48,8 +52,11 @@ function handleCellClick(event, humanPlayer, computerPlayer) {
   const row = parseInt(parts[0], 10);
   const column = parseInt(parts[1], 10);
 
+  if (!computerPlayer.gameboard.receiveAttack(row, column, computerPlayer)) {
+    return;
+  }
   // Player attacks computer
-  computerPlayer.gameboard.receiveAttack(row, column, computerPlayer);
+
   renderGameboards(computerPlayer);
 
   // Computer counterattacks

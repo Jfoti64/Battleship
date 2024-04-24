@@ -1,5 +1,5 @@
 import Ship from './ships';
-import { renderGameboards, addShipToGameboard, changeMessage } from './renderDom';
+import { changeMessage } from './renderDom';
 
 export default class Gameboard {
   constructor(rows = 10, columns = 10) {
@@ -88,15 +88,18 @@ export default class Gameboard {
         changeMessage(message);
       }
 
-      // Optionally update the cell state to 'hit' for visual feedback
+      // Update the cell state to 'hit' for visual feedback
       this.gameboard[row][column] = 'hit';
-    } else if (this.gameboard[row][column] === 'hit') {
-      changeMessage('That cell has already been fired at');
-    } else {
-      // Mark the cell as 'miss' if there is no ship
-      this.gameboard[row][column] = 'miss';
-      changeMessage('Miss!');
+      return true;
     }
+    if (this.gameboard[row][column] === 'hit' || this.gameboard[row][column] === 'miss') {
+      changeMessage('That cell has already been fired at');
+      return false;
+    }
+    // Mark the cell as 'miss' if there is no ship
+    this.gameboard[row][column] = 'miss';
+    changeMessage('Miss!');
+    return true;
   }
 
   allShipsSunk() {
