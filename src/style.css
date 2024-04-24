@@ -65,8 +65,12 @@ button {
 }
 
 @keyframes fillCell {
-  from { background: #fff; }
-  to { background: var(--fill-color, #ffffff); }
+  from {
+    background: #fff;
+  }
+  to {
+    background: var(--fill-color, #ffffff);
+  }
 }
 
 .gameboardCell {
@@ -76,6 +80,10 @@ button {
   justify-content: center;
   background-color: #fff;
   animation: fillCell 0.8s forwards; /* Use the animation */
+}
+
+.gameboardCell:hover {
+  background-color: #e0e0e0 !important; /* Force this color on hover */
 }
 
 .green {
@@ -88,4 +96,10 @@ button {
 
 .hit {
   --fill-color: #d32f2f;
+}
+
+.gameboardCell.green:hover,
+.gameboardCell.miss:hover,
+.gameboardCell.hit:hover {
+  background-color: var(--fill-color) !important; /* Maintain state color on hover */
 }
