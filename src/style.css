@@ -1,57 +1,91 @@
-html {
+html,
+body {
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: Arial, sans-serif;
 }
 
-body {
-  height: 100%;
-  margin: 0px;
-  display: grid;
-  grid-template-rows: 0.25fr 0.15fr 0.10fr 1fr 0.25fr;
-}
 .grid {
   display: grid;
 }
 
 .gameBoards {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 25px;
-  margin: 10px;
+  gap: 25px;
+  padding: 10px;
+  justify-items: center;
 }
 
 #gameboard1 {
+  display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: repeat(10, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 3px solid black;
 }
 
 #gameboard2 {
+  display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: repeat(10, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 3px solid black;
+}
+
+.gameBoardContainer {
+  width: 80%;
+  aspect-ratio: 1 / 1;
+}
+
+#messages {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #f8f8f8; /* Light background for the message area */
+}
+
+header,
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #004466;
+  color: white;
+}
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+@keyframes fillCell {
+  from { background: #fff; }
+  to { background: var(--fill-color, #ffffff); }
 }
 
 .gameboardCell {
-  border: 2px solid black;
-}
-
-.border {
-  border: solid black 2px;
-}
-
-footer {
-  grid-row: -1;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  animation: fillCell 0.8s forwards; /* Use the animation */
 }
 
 .green {
-  background-color: green;
-}
-
-.red {
-  background-color: rgb(137, 36, 36);
+  --fill-color: #4caf50;
 }
 
 .miss {
-  background-color: yellow;
+  --fill-color: #ffeb3b;
 }
 
 .hit {
-  background-color: red;
+  --fill-color: #d32f2f;
 }
